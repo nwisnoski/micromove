@@ -211,7 +211,7 @@ for(r in 1:nreps){
                               Speed = speed, 
                               x = sum(runif(seconds_per_day), 0, speed), 
                               y = 0)
-  twitching_distributions <- bind_rows(twitching_distributions_noback, this_endpoint)
+  twitching_distributions_noback <- bind_rows(twitching_distributions_noback, this_endpoint)
 }
 
 write_csv(twitching_distributions_noback,file = "twitching_movements_noback.csv")
