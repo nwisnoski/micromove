@@ -12,6 +12,7 @@ twitching_distributions_noback <- read_csv(file = "twitching_movements_noback.cs
 random_move_fig <- random_distributions %>% 
   filter(Organism %in% subset(movements, Domain == "Prokaryote")$Organism) %>% 
   mutate(dist_from_center = sqrt((x^2) + (y^2))) %>% 
+  mutate(dist_from_center = dist_from_center*(10^-6)) %>% 
   arrange(Speed) %>% 
   mutate(Organism = factor(Organism, levels = unique(Organism), ordered = TRUE)) %>% 
   ggplot(aes(x = dist_from_center, color = as.factor(Speed), y = Organism, fill = as.factor(Speed))) + 
@@ -30,6 +31,7 @@ random_twitching_fig <- random_distributions %>%
   filter(Organism %in% subset(movements, Domain == "Prokaryote")$Organism) %>% 
   bind_rows(twitching_distributions) %>% 
   mutate(dist_from_center = sqrt((x^2) + (y^2))) %>% 
+  mutate(dist_from_center = dist_from_center*(10^-6)) %>% 
   arrange(Speed) %>% 
   mutate(Organism = factor(Organism, levels = unique(Organism), ordered = TRUE)) %>% 
   ggplot(aes(x = dist_from_center, color = as.factor(Speed), y = Organism, fill = as.factor(Speed))) + 
@@ -48,6 +50,7 @@ ggsave(filename = "figure_distances_per_day.pdf", plot = random_twitching_fig, w
 random_move_noback_fig <- random_distributions_noback %>% 
   filter(Organism %in% subset(movements, Domain == "Prokaryote")$Organism) %>% 
   mutate(dist_from_center = sqrt((x^2) + (y^2))) %>% 
+  mutate(dist_from_center = dist_from_center*(10^-6)) %>% 
   arrange(Speed) %>% 
   mutate(Organism = factor(Organism, levels = unique(Organism), ordered = TRUE)) %>% 
   ggplot(aes(x = dist_from_center, color = as.factor(Speed), y = Organism, fill = as.factor(Speed))) + 
@@ -66,6 +69,7 @@ random_twitching_noback_fig <- random_distributions_noback %>%
   filter(Organism %in% subset(movements, Domain == "Prokaryote")$Organism) %>% 
   bind_rows(twitching_distributions_noback) %>% 
   mutate(dist_from_center = sqrt((x^2) + (y^2))) %>% 
+  mutate(dist_from_center = dist_from_center*(10^-6)) %>% 
   arrange(Speed) %>% 
   mutate(Organism = factor(Organism, levels = unique(Organism), ordered = TRUE)) %>% 
   ggplot(aes(x = dist_from_center, color = as.factor(Speed), y = Organism, fill = as.factor(Speed))) + 
