@@ -1,5 +1,6 @@
 library(tidyverse)
 library(ggridges)
+library(scales)
 
 
 movements <- read_csv("./movement_rates.csv")
@@ -37,12 +38,14 @@ random_twitching_fig <- random_distributions %>%
   ggplot(aes(x = dist_from_center, color = as.factor(Speed), y = Organism, fill = as.factor(Speed))) + 
   geom_density_ridges(alpha = 0.5) +
   #facet_wrap(~Organism, scales = "free_y")+
-  scale_x_log10() +
+  scale_x_log10(breaks = trans_breaks("log10", function(x) 10^x),
+                labels = trans_format("log10", math_format(10^.x))) +
   theme_minimal() +
-  labs(color = "Speed, um/s", fill = "Speed, um/s",
-       x = "Distance traveled (m/d)") +
+  labs(color = "Speed, µm/s", fill = "Speed, µm/s",
+       x = "Distance traveled (m/d)", y = "") +
   scale_color_viridis_d() + 
-  scale_fill_viridis_d()
+  scale_fill_viridis_d() + 
+  theme(axis.text.y = element_text(face = "italic"))
 ggsave(filename = "figure_distances_per_day.pdf", plot = random_twitching_fig, width = 8, height = 6)
 
 
