@@ -5,16 +5,16 @@ Prokaryote,Methanocaldococcus jannaschii,400,200
 Prokaryote,Bdellovibrio bacterivorus,160,160
 Prokaryote,Vibrio cholerae,100,50
 Prokaryote,Caulobacter crescentus,40,20
-Prokaryote,Spirochete Brachyspira hyodysenteriae,40,8
-Prokaryote,E. coli,30,15
-Prokaryote,S. typhimurium,30,15
+Prokaryote,Spirochete brachyspira hyodysenteriae,40,8
+Prokaryote,Escherichia coli,30,15
+Prokaryote,Salmonella typhimurium,30,15
 Prokaryote,Synechococcus,25,10
-Prokaryote,Myxococcus Xanthus motility system S,20,10
-Prokaryote,Myxococcus Xanthus motility system A,4,2
-Prokaryote,Listeria monocytogenes,6,3
-Prokaryote,Halobacterium halobium,3,1
+Prokaryote,Myxococcus xanthus motility system S,0.33333,10
+Prokaryote,Myxococcus xanthus motility system A,0.066667,2
+Prokaryote,Listeria monocytogenes,0.1,3
+Prokaryote,Halobacterium halobium,0.05,1
 Eukaryote,Paramecium tetraurelia,1000,5
 Eukaryote,Tetrahymena thermophila,400,8
 Eukaryote,Gyrodinium dorsum,300,10
 Eukaryote,Chlamydomonas reinhardtii,150,15
-Eukaryote,Dictostelium discoideum,10,1
+Eukaryote,Dictostelium discoideum,0.166666667,1

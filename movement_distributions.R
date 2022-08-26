@@ -137,12 +137,46 @@ for(r in 1:nreps){
     trajectory_i[t, 2] <- pos_t[2]
   }
   
-  this_endpoint <- data.frame(Organism = "Twitching motility", 
+  this_endpoint <- data.frame(Organism = "Neisseria gonorrhoeae", 
                               Speed = speed, 
                               x = trajectory_i[t,1], 
                               y = trajectory_i[t,2])
   twitching_distributions <- bind_rows(twitching_distributions, this_endpoint)
 }
+
+# now try for even slower
+start <- c(0,0)  
+speed <- 5/60 # 5 micron / min aligns with slow myxococcus
+
+for(r in 1:nreps){
+  trajectory_i <- matrix(nrow = seconds_per_day, ncol = 2, dimnames = list(NULL, c("x", "y")))
+  
+  theta = pi/2 # start in a single direction
+  
+  for(t in 1:seconds_per_day){
+    
+    dist_i <- runif(1, 0, speed)
+    
+    if(runif(1) < 0.25){
+      theta <- runif(1, 0, 2*pi) # a quarter of a the time, change directions
+    }
+    
+    if(t == 1){
+      pos_t <- c(dist_i*sin(theta), dist_i*cos(theta))
+    } else {pos_t <- c(trajectory_i[t-1,1] + dist_i*sin(theta),
+                       trajectory_i[t-1,2] + dist_i*cos(theta))}
+    
+    trajectory_i[t, 1] <- pos_t[1]
+    trajectory_i[t, 2] <- pos_t[2]
+  }
+  
+  this_endpoint <- data.frame(Organism = "Myxococcus xanthus", 
+                              Speed = speed, 
+                              x = trajectory_i[t,1], 
+                              y = trajectory_i[t,2])
+  twitching_distributions <- bind_rows(twitching_distributions, this_endpoint)
+}
+
 
 write_csv(twitching_distributions,file = "twitching_movements.csv")
  
