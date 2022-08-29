@@ -82,10 +82,10 @@ random_walk_annotated <- trajectory_i %>%
   as_tibble() %>% 
   ggplot(aes(x = x, y = y)) + 
   geom_path(size = 0.2, alpha = 0.5) +
-  geom_path(data = trajectory_i %>% 
-              as_tibble() %>% 
-              slice(6500:9000),
-            color = "red") +
+  #geom_path(data = trajectory_i %>% 
+  #            as_tibble() %>% 
+  #            slice(6500:9000),
+  #          color = "red") +
   geom_point(data = start_endpoints[1,], color = "blue", size = 3) + 
   geom_point(data = start_endpoints[2,], color = "blue", size = 3) + 
   geom_segment(data = start_endpoints, 
@@ -94,12 +94,12 @@ random_walk_annotated <- trajectory_i %>%
                color = "blue", size = 1) + 
   theme_bw() +
   theme(axis.title = element_blank(), 
-        axis.text = element_blank(),
-        panel.grid = element_blank(),
-        axis.ticks = element_blank()) + 
+        #axis.text = element_blank(),
+        panel.grid = element_blank()) +
+        #axis.ticks = element_blank()) + 
   annotate("text", x = xrng[2]- 10000, y = yrng[1] + 5000, label = paste("Net distance =", round(net_dist)), color = "blue", hjust = 1) +
-  annotate("text", x = xrng[2]- 10000, y = yrng[1] - 3000, label = paste("Total distance =", round(total_dist)), hjust = 1) + 
-  annotate("text", x = 29000, y = -4000, label = "Movement phase\ntransition", color = "red")
+  annotate("text", x = xrng[2]- 10000, y = yrng[1] - 3000, label = paste("Total distance =", round(total_dist)), hjust = 1)  
+  #annotate("text", x = 29000, y = -4000, label = "Movement phase\ntransition", color = "red")
 random_walk_annotated  
 ggsave("figure_random_walk_annotated.pdf", random_walk_annotated, width = 8, height = 8)
 

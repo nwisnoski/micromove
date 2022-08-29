@@ -10,7 +10,8 @@ movements %>%
   mutate(Organism = factor(Organism, levels = Organism, ordered = T)) %>% 
   ggplot(aes(x = Organism, y = Speed_umps)) + 
   geom_bar(stat = "identity") + 
-  coord_flip()
+  coord_flip() +
+  scale_y_log10()
 
 speed <- movements[1]
 
